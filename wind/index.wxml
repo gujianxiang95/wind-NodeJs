@@ -1,0 +1,6 @@
+<!--components/moive/index.wxml-->
+<video>
+  <image src="{{img}}"></image>
+  <image src="./img/moive@tag.png"></image>
+  <text>{{content}}</text>
+</video> 
