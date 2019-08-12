@@ -18,6 +18,7 @@ const { REDIS_CONF }   =require('./conf/db')
 
 const magazine = require('./routes/magazine')
 const like = require('./routes/like')
+const book = require('./routes/book')
 // error handler
 onerror(app)
 // middlewares
@@ -72,6 +73,7 @@ app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(magazine.routes(), magazine.allowedMethods())
 app.use(like.routes(), like.allowedMethods())
+app.use(book.routes(), book.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

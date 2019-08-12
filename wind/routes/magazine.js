@@ -36,4 +36,6 @@ router.get('/hot_list', async (ctx, next)=> {
     ctx.body = new SuccessModel(listData)
 })
 
+
+
 module.exports = router
