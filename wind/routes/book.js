@@ -1,6 +1,6 @@
 const router = require('koa-router')()
 const {SuccessModel,ErrorModel} = require('../model/resModel')
-const { getDetail,getLikeStatus,getComments  } = require('../controller/book')
+const { getDetail,getLikeStatus,getComments,postComment,getHot,getSearch } = require('../controller/book')
 
 router.prefix('/book')
 
@@ -29,6 +29,24 @@ router.get('/:bid/short_comment', async (ctx, next)=> {
     });
     // console.log(listData)
     ctx.body = new SuccessModel(data)
+})
+router.post('/add/short_comment', async (ctx, next)=> {
+    const id =  ctx.request.body.book_id
+    const content =  ctx.request.body.content
+    console.log(id,content)
+    const listData = await postComment(id,content)
+   
+    ctx.body = new SuccessModel(listData)
+})
+
+router.get('/hot_keyword', async (ctx, next)=> {
+    const listData = await getHot()
+    ctx.body = new SuccessModel(listData)
+})
+router.get('/search', async (ctx, next)=> {
+    let q =  ctx.request.query.q
+    const listData = await getSearch(q)
+    ctx.body = new SuccessModel(listData)
 })
 
 module.exports = router
