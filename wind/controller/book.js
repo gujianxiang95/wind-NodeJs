@@ -36,8 +36,8 @@ const getHot = async (id,content,nums)=>{
     return exec(sql)
 }
 
-const getSearch = async (title)=>{
-    const sql = 'select * from book where title like "' + title+ '%"'
+const getSearch = async (title,start)=>{
+    const sql = 'select * from book where title like "' + title+ '%" limit ' +start + ',5'
     console.log(sql)
     return exec(sql)
 }

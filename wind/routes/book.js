@@ -9,11 +9,13 @@ router.get('/:bid/detail', async (ctx, next)=> {
     const listData = await getDetail(id)
     ctx.body = new SuccessModel(listData)
 })
+
 router.get('/:bid/favor', async (ctx, next)=> {
     const id = ctx.params.bid
     const listData = await getLikeStatus(id)
     ctx.body = new SuccessModel(listData)
 })
+
 router.get('/:bid/short_comment', async (ctx, next)=> {
     const id = ctx.params.bid
     let listData = await getComments(id)
@@ -30,6 +32,7 @@ router.get('/:bid/short_comment', async (ctx, next)=> {
     // console.log(listData)
     ctx.body = new SuccessModel(data)
 })
+
 router.post('/add/short_comment', async (ctx, next)=> {
     const id =  ctx.request.body.book_id
     const content =  ctx.request.body.content
@@ -43,9 +46,11 @@ router.get('/hot_keyword', async (ctx, next)=> {
     const listData = await getHot()
     ctx.body = new SuccessModel(listData)
 })
+
 router.get('/search', async (ctx, next)=> {
     let q =  ctx.request.query.q
-    const listData = await getSearch(q)
+    let start =  ctx.request.query.start
+    const listData = await getSearch(q,start)
     ctx.body = new SuccessModel(listData)
 })
 
