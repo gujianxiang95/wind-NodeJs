@@ -1,6 +1,6 @@
 const router = require('koa-router')()
 const {SuccessModel,ErrorModel} = require('../model/resModel')
-const { getDetail,getLikeStatus,getComments,postComment,getHot,getSearch } = require('../controller/book')
+const { getDetail,getLikeStatus,getComments,postComment,getHot,getSearch ,getMyBookCount} = require('../controller/book')
 
 router.prefix('/book')
 
@@ -51,6 +51,12 @@ router.get('/search', async (ctx, next)=> {
     let q =  ctx.request.query.q
     let start =  ctx.request.query.start
     const listData = await getSearch(q,start)
+    ctx.body = new SuccessModel(listData)
+})
+
+router.get('/favor/count', async (ctx, next)=> {
+   
+    const listData = await getMyBookCount()
     ctx.body = new SuccessModel(listData)
 })
 

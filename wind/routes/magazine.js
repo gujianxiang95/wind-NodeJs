@@ -1,6 +1,6 @@
 const router = require('koa-router')()
 const {SuccessModel,ErrorModel} = require('../model/resModel')
-const { getLatest,getPre ,getNext,getFavor,getHotList } = require('../controller/magazine')
+const { getLatest,getPre ,getNext,getFavor,getHotList,getMyfavor } = require('../controller/magazine')
 router.prefix('/classic')
 
 router.get('/latest', async (ctx, next)=> {
@@ -36,6 +36,9 @@ router.get('/hot_list', async (ctx, next)=> {
     ctx.body = new SuccessModel(listData)
 })
 
-
+router.get('/favor', async (ctx, next)=> {
+    const listData = await getMyfavor()
+    ctx.body = new SuccessModel(listData)
+})
 
 module.exports = router

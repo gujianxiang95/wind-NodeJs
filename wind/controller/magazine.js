@@ -37,7 +37,11 @@ const getHotList = async ()=>{
     console.log(sql)
     return exec(sql)
 }
-
+const getMyfavor = async ()=>{
+    let sql = 'select * from magazine'
+    console.log(sql)
+    return exec(sql)
+}
 module.exports = {
-    getLatest,getPre,getNext,getFavor,getHotList
+    getLatest,getPre,getNext,getFavor,getHotList,getMyfavor
 }

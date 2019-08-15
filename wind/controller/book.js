@@ -41,6 +41,14 @@ const getSearch = async (title,start)=>{
     console.log(sql)
     return exec(sql)
 }
+
+const getMyBookCount = async (title,start)=>{
+    //未涉及多用户，所以……
+    const sql = 'select count(*) as count from book '
+    console.log(sql)
+    return exec(sql)
+}
+
 module.exports = {
-    getDetail,getLikeStatus,getComments,postComment,getHot,getSearch
+    getDetail,getLikeStatus,getComments,postComment,getHot,getSearch,getMyBookCount
 }
